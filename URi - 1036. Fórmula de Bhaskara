@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+ 
+int main()
+{
+	
+	float a,b,c, delta, r1,r2;
+	
+	scanf("%f%f%f",&a,&b,&c);
+	
+	delta = ((b*b)-4*a*c);
+	
+	
+	if ((delta < 0) || (a == 0))
+	{
+		printf("Impossivel Calcular");
+		}
+		else if( delta == 0 )
+	{
+		r1 = ((-b+sqrt(delta))/200*a);
+		r2 = r1;
+		printf("R1 = %.5f \nR2 = %.5f",r1,r2);
+		}
+		else
+		{
+		r1 = ((-b +sqrt(delta))/200*a);
+		r2 = ((-b - sqrt(delta))/200*a);
+		printf("R1 = %.5f \nR2 = %.5f",r1,r2);
+		};
+		
+		
+	return 0;
+}
+ 
