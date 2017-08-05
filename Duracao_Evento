@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+struct dma {
+      int dia;
+      int mes;
+      int ano; 
+   };
+   
+typedef struct dma data;
+ 
+data fimEvento (data inicio, int duracao) {
+   data fim;
+   int ano = duracao / 360;
+   int mes = (duracao % 360)/30;
+   int dia= (duracao % 360)%30;
+  
+   fim.dia = inicio.dia + dia;
+   if (fim.dia > 30){
+    fim.dia = fim.dia - 30;
+    fim.mes = inicio.mes + mes +1;
+   }else{
+    fim.mes = inicio.mes + mes;
+   }
+   
+  if (fim.mes > 12)  {
+    fim.ano = inicio.ano + ano+ 1;
+  }else{
+    fim.ano = inicio.ano + ano;
+  }
+   return fim;
+} 
+
+int main (void) {
+   data a, b;
+   int dura;
+   scanf ("%d %d %d", &a.dia, &a.mes, &a.ano);
+   scanf ("%d", &dura);
+   b = fimEvento (a, dura);
+   printf ("%d %d %d\n", b.dia, b.mes, b.ano);
+}  
