@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+
+struct dma{
+   int dia;
+   int mes;
+   int ano;
+};
+
+typedef struct dma data;
+
+int quantosDias(data a){
+  int dia_mes_ano = ((a.ano * 360)+ (a.mes*30) + a.dia);
+  return dia_mes_ano;
+}
+
+int passaramDias(int a, int b){
+  return b - a;
+}
+
+int main(void)
+{
+  data a, b;
+   int dias;
+   scanf ("%d %d %d", &a.dia, &a.mes, &a.ano);
+   scanf ("%d %d %d", &b.dia, &b.mes, &b.ano);
+   dias = passaramDias(quantosDias(a), quantosDias(b));
+   printf ("%d\n", dias);
+
+}
