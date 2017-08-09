@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 50
+int size;
+
+// Defining the stack structure
+typedef struct stack {
+    int arr[MAX];
+    int top;
+}Pilha;
+
+// Initializing the stack(i.e., top=-1)
+void init_stk(Pilha*st)
+{
+    st->top = -1;
+}
+
+// Entering the elements into stack
+void push(Pilha *st, int num)
+{
+    int i = num;
+    if (st->top == size - 1)
+    {
+        printf("\nStack overflow(i.e., stack full).");
+        return;
+    }
+
+    for(i = num; i != 0 ; i--){
+        st->top++;
+        st->arr[st->top] = i;
+    }
+}
+
+//Deleting an element from the stack.
+int pop(Pilha *st)
+{
+    int num;
+    int fat = 1;
+
+    if (st->top == -1)
+    {
+        printf("\nStack underflow(i.e., stack empty).");
+        return NULL;
+    }
+    num = (int)(st->arr[st->top]);
+    st->top--;
+    return num;
+
+}
+
+int fatorial(Pilha *st, int num)
+{
+    int fat = 1;
+    int contador ;
+    for (contador = num; contador > 0; contador--){
+        fat = fat * pop(st);
+    }
+
+    return fat;
+}
+
+void display(Pilha *st)
+{
+    int i;
+    for (i = st->top; i >= 0; i--)
+        printf("\n%d", st->arr[i]);
+}
+
+int main()
+{
+    int element, opt, val;
+    Pilha ptr;
+    init_stk(&ptr);
+    printf("\nTamanho da pilha :");
+    scanf("%d", &size);
+
+    printf("\n\nCalcular Fatorial");
+
+    printf("\nEntre com o número:");
+    scanf("%d", &val);
+    push(&ptr, val);
+    element = fatorial(&ptr, val);
+    printf("\nO fatorial eh: %d", element);
+
+
+
+    return 0;
+}
